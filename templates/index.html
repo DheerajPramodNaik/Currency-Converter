@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Currency Converter</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+	<div class="heading">
+		<h1>Currency Converter</h1>
+	</div>
+	<form action="/" method="POST" class="convert-form">
+		<div class="error">
+			{{ error }}
+		</div>
+		<div class="txtb">
+			<select name="dd-1" id="dd-1" placeholder="Dheeraj">
+				<option value="null">Convert From</option>
+				{% for i in currency %}
+				<option value="{{ i }}">{{ i }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="txtb">
+			<!-- <input type="text" name="number" id="number"> -->
+			<input type="text" name="number" id="number" placeholder="Enter A Value" onfocus="this.placeholder = ''"onblur="this.placeholder = 'Enter A Value'" />
+			<!-- <span data-placeholder="Enter A Value"></span> -->
+		</div>
+
+		<div class="txtb">
+			<select name="dd-2" id="dd-2" class="dd-2">
+				<option value="null">Convert To</option>
+				{% for i in currency %}
+				<option value="{{ i }}">{{ i }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<input type="submit" name="submit" value="Convert" class="conbtn">
+		<div class="msg">
+			{{ msg }}
+		</div>
+	</form>
+	<div class="info">
+		<input type="text" name="info" value="Currency Abbrevations" id="info" readonly>
+		<nav id="list">
+            <ul>
+            	{% for sf, ff in zip(shortForm,fullForm) %}
+            	<li> {{ sf }} :   {{ ff }} </li>
+            	<br>
+                {% endfor %}
+
+            </ul>
+        </nav>
+	</div>
+	
+</body>
